@@ -25,7 +25,7 @@ para llegar a la cantidad total. Otra cosa es que las haya en el almacén,
 pero como se puede comprobar, el número de botellas pequeñas depende del
 número que haya de botellas grandes.
 
-El test que ha hecho posible encontrar el fallo es:
+El test que ha hecho posible encontrar el fallo es (sin ninguna adaptación):
 
 	@Test
 	public void testParaCalcularBotellasPequenasSegunB1()
@@ -41,6 +41,12 @@ Según la implementación del código, el resultado en este caso es 0.
 
 Solución: comentar ese fragmento del código.
 
+Enlace de GitHub con la versión del código que contiene el fallo:
+https://github.com/malozanom/AlvaroLopezGarcia_ISI_Group1/commit/b1b7ae48714666b9b01ff3f06ae2f7527c314815#diff-bb3ad3ab1d72cb3c7416a5fb71430450
+
+Enlace de GitHub con la versión corregida:
+https://github.com/malozanom/AlvaroLopezGarcia_ISI_Group1/commit/978d25d8237b0d319383c3b5400fe06624301218#diff-bb3ad3ab1d72cb3c7416a5fb71430450
+
 
 FALLO 2:
 
@@ -55,7 +61,7 @@ número de botellas pequeñas que hay (pequenyas), devuelve el número de botell
 pequeñas que hay en el almacén. Creo que lo normal en este caso sería notificar
 de algún modo que la capacidad que se pide es superior a la que se puede suministrar.
 
-El test que ha hecho posible encontrar el fallo es:
+El test que ha hecho posible encontrar el fallo es (sin ninguna adaptación):
 
 	@Test (expected = RuntimeException.class)
 	public void testParaCalcularBotellasPequenasSegunB2()
@@ -71,5 +77,9 @@ Según la implementación del código, el resultado en este caso es 7.
 Solución: comentar la línea "max_pequenyas = pequenyas;" y justo después añadir
 la línea "throw new RuntimeException("No hay suficientes botellas en el almacén");"
 
+Enlace de GitHub con la versión del código que contiene el fallo:
+https://github.com/malozanom/AlvaroLopezGarcia_ISI_Group1/commit/b1b7ae48714666b9b01ff3f06ae2f7527c314815#diff-bb3ad3ab1d72cb3c7416a5fb71430450
 
+Enlace de GitHub con la versión corregida:
+https://github.com/malozanom/AlvaroLopezGarcia_ISI_Group1/commit/978d25d8237b0d319383c3b5400fe06624301218#diff-bb3ad3ab1d72cb3c7416a5fb71430450
 
