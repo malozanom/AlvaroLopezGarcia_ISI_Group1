@@ -2,3 +2,15 @@
 BISIESTOS
 #########
 Adaptando los tests de Bisiestos.java a esta implementación, no se encuentran fallos en el código.
+
+#############
+EMBOTELLADORA
+#############
+Se ha encontrado un fallo en el siguiente fragmento de código:
+
+		modulo = total%5;
+		if(modulo == 0){
+			return 0;
+		}
+
+Es decir, cuando el número total de litros que hay que embotellar es múltiplo de 5, automáticamente devuelve que el número de botellas pequeñas necesarias es 0. Sin embargo, no tiene por qué darse esta condición (depende del número de botellas grandes que haya en el almacén). Por ejemplo, si queremos  embotellar 30L y tenemos 4 botellas grandes (20L en total) necesitaríamos 10 botellas pequeñas (cada una de 1L) para llegar a la cantidad total. Otra cosa es que las haya en el almacén, pero como se puede comprobar, el número de botellas pequeñas depende del número que haya de botellas grandes.
