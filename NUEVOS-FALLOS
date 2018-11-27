@@ -6,6 +6,8 @@ Adaptando los tests de Bisiestos.java a esta implementación, no se encuentran f
 #############
 EMBOTELLADORA
 #############
+FALLO 1:
+
 Se ha encontrado un fallo en el siguiente fragmento de código:
 
 		modulo = total%5;
@@ -13,4 +15,61 @@ Se ha encontrado un fallo en el siguiente fragmento de código:
 			return 0;
 		}
 
-Es decir, cuando el número total de litros que hay que embotellar es múltiplo de 5, automáticamente devuelve que el número de botellas pequeñas necesarias es 0. Sin embargo, no tiene por qué darse esta condición (depende del número de botellas grandes que haya en el almacén). Por ejemplo, si queremos  embotellar 30L y tenemos 4 botellas grandes (20L en total) necesitaríamos 10 botellas pequeñas (cada una de 1L) para llegar a la cantidad total. Otra cosa es que las haya en el almacén, pero como se puede comprobar, el número de botellas pequeñas depende del número que haya de botellas grandes.
+Es decir, cuando el número total de litros que hay que embotellar
+es múltiplo de 5, automáticamente devuelve que el número de botellas
+pequeñas necesarias es 0. Sin embargo, no tiene por qué darse esta
+condición (depende del número de botellas grandes que haya en el almacén).
+Por ejemplo, si queremos  embotellar 30L y tenemos 4 botellas grandes
+(20L en total) necesitaríamos 10 botellas pequeñas (cada una de 1L)
+para llegar a la cantidad total. Otra cosa es que las haya en el almacén,
+pero como se puede comprobar, el número de botellas pequeñas depende del
+número que haya de botellas grandes.
+
+El test que ha hecho posible encontrar el fallo es:
+
+	@Test
+	public void testParaCalcularBotellasPequenasSegunB1()
+	{
+		pequena = 7;
+		grande = 4;
+		total = 25;
+		int numPequena = embotelladora.calcBotellasPequenyas(pequena, grande, total);
+		assertTrue ("testParaAñoBisiestoSegunB1", numPequena == 5);
+	}
+
+Según la implementación del código, el resultado en este caso es 0.
+
+Solución: comentar ese fragmento del código.
+
+
+FALLO 2:
+
+Se ha encontrado un fallo en el siguiente fragmento de código:
+
+		if((pequenyas-max_pequenyas) < 0){
+			max_pequenyas = pequenyas;
+		}
+
+Cuando el número de botellas pequeñas necesarias (max_pequenyas) es superior al
+número de botellas pequeñas que hay (pequenyas), devuelve el número de botellas
+pequeñas que hay en el almacén. Creo que lo normal en este caso sería notificar
+de algún modo que la capacidad que se pide es superior a la que se puede suministrar.
+
+El test que ha hecho posible encontrar el fallo es:
+
+	@Test (expected = RuntimeException.class)
+	public void testParaCalcularBotellasPequenasSegunB2()
+	{
+		pequena = 7;
+		grande = 4;
+		total = 28;
+		embotelladora.calcBotellasPequenyas(pequena, grande, total);
+	}
+
+Según la implementación del código, el resultado en este caso es 7.
+
+Solución: comentar la línea "max_pequenyas = pequenyas;" y justo después añadir
+la línea "throw new RuntimeException("No hay suficientes botellas en el almacén");"
+
+
+
