@@ -83,3 +83,19 @@ https://github.com/malozanom/AlvaroLopezGarcia_ISI_Group1/commit/b1b7ae48714666b
 Enlace de GitHub con la versión corregida:
 https://github.com/malozanom/AlvaroLopezGarcia_ISI_Group1/commit/978d25d8237b0d319383c3b5400fe06624301218#diff-bb3ad3ab1d72cb3c7416a5fb71430450
 
+#########
+Numeros romanos
+#########
+Adaptando los tests de RomanNumeral.java a esta implementación, se encuentra este fallo al no cumplirse la regla:
+Los símbolos I, X y C se restan si están a la izquierda de otro mayor y solamente pueden anteponerse a los dos símbolos que le siguen en la sucesión.
+I se resta de V y X
+X se resta de L y C
+C se resta de D y M
+no controlan esta regla y no especifican que no puedan incluirse en ese orden.
+
+#########
+Black friday
+#########
+
+Adaptando los tests de DescuentoBlackFriday.java a esta implementación, no se encuentran fallos en el código.
+
